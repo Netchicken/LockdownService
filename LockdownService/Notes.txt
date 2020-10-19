@@ -1,0 +1,32 @@
+﻿https://medium.com/wortell/building-a-windows-service-application-using-topshelf-part-1-of-2-getting-started-c76149e792ed
+
+Installing and uninstalling
+Now that the Windows Service is operational it can be installed. Topshelf provides functionality for this so installutil.exe is no longer needed. The Windows Service can be installed from the command prompt so start a Command Prompt with the Run as administrator option and navigate to the binary output folder of the project. Run the executable of the Console Application with install as command line argument.
+
+
+
+C:\Dropbox\Enform\Enform Lockdown Service\Lockdown Service\LockdownService\bin\Debug\netcoreapp3.0>LockdownService.exe install
+19-10-2020 15:08:48.1472|INFO |Configuration Result:
+[Success] Name Lockdownservice
+[Success] DisplayName LockdownService
+[Success] Description Vision College Lockdown service
+[Success] ServiceName Lockdownservice
+19-10-2020 15:08:48.1579|INFO |Topshelf v4.2.1.215, .NET Framework v3.1.8
+19-10-2020 15:08:48.1743|DEBUG|Attempting to install 'Lockdownservice'
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+19-10-2020 15:08:48.1944|INFO |Installing LockdownService service
+Installing service Lockdownservice...
+Service Lockdownservice has been successfully installed.
+19-10-2020 15:08:48.2343|DEBUG|Opening Registry
+19-10-2020 15:08:48.2364|DEBUG|Service path: "C:\Dropbox\Enform\Enform Lockdown Service\Lockdown Service\LockdownService\bin\Debug\netcoreapp3.0\LockdownService.exe"
+19-10-2020 15:08:48.2367|DEBUG|Image path: "C:\Dropbox\Enform\Enform Lockdown Service\Lockdown Service\LockdownService\bin\Debug\netcoreapp3.0\LockdownService.exe"  -displayname "LockdownService" -servicename "Lockdownservice"
+19-10-2020 15:08:48.2371|DEBUG|Closing Registry
+
+The Install phase completed successfully, and the Commit phase is beginning.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
