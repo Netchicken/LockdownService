@@ -5,13 +5,13 @@ namespace LockdownService
 {
     //https://docs.microsoft.com/en-us/dotnet/api/system.net.httplistenerrequest?view=netcore-3.1
 
-    static class URlListener
+    internal static class URlListener
     {
-        // This example requires the System and System.Net namespaces.string[] prefixes
-        public static void SimpleListenerAsync()
+
+        public static void SimpleListener()
         {
 
-            var prefixes = new[] { "https://localhost:44300/", "http://www.contoso.com:8080/index/" };
+            var prefixes = new[] { "https://localhost:44300/", "https://www.stuff.co.nz/" };
 
 
             if (prefixes == null || prefixes.Length == 0)
@@ -82,7 +82,7 @@ namespace LockdownService
             output.Write(buffer, 0, buffer.Length);
             // You must close the output stream.
             output.Close();
-            listener.Stop();
+            //  listener.Stop();
         }
 
         private static void LockdownEvents()

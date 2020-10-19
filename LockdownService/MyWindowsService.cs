@@ -8,14 +8,11 @@ namespace LockdownService
 
         public void Start()
         {
-
-            URlListener.SimpleListenerAsync();
-
-
-
-
             _log.Info("LockdownService Starting...");
-            // business logic goes here
+
+            URlListener.SimpleListener();
+
+
             _log.Info("LockdownService Started succesfully.");
         }
 
