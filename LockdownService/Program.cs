@@ -26,7 +26,7 @@ namespace LockdownService
                     serviceRecovery.RunProgram(10, @"C:\Windows\Notepad.exe");
 
                     // subsequent failures, 15 minute delay
-                  //  serviceRecovery.RestartComputer(15, "Vision College Lockdown Service failure");
+                    //  serviceRecovery.RestartComputer(15, "Vision College Lockdown Service failure");
                 });
 
                 hostConfig.DependsOn("Spooler");
@@ -41,7 +41,7 @@ namespace LockdownService
                 hostConfig.Service<MyWindowsService>(serviceConfig =>
                 {
                     serviceConfig.ConstructUsing(() => new MyWindowsService());
-                    serviceConfig.WhenStarted(s => s.StartAsync());
+                    serviceConfig.WhenStarted(s => s.Start());
                     serviceConfig.WhenStopped(s => s.Stop());
 
                     serviceConfig.WhenPaused(s => s.Pause());
