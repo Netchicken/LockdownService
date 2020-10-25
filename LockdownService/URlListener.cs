@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Net;
 
 namespace LockdownService
@@ -7,11 +8,18 @@ namespace LockdownService
 
     internal static class URlListener
     {
-
+        private static readonly ILog _log = LogManager.GetLogger(typeof(URlListener));
         public static void SimpleListener()
         {
+            //does it work?
+            if (!HttpListener.IsSupported)
+            {
+                Console.WriteLine("Windows XP SP2 or Server 2003 is required to use the HttpListener class.");
+                return;
+            }
 
-            var prefixes = new[] { "https://localhost:44300/", "https://www.stuff.co.nz/" };
+
+            var prefixes = new[] { "https://localhost:44300/", "https://www.stuff.co.nz/", "https://www.reddit.com/" };
 
 
             if (prefixes == null || prefixes.Length == 0)
@@ -27,7 +35,7 @@ namespace LockdownService
 
 
             listener.Start();
-            Console.WriteLine("Listening for lockdown ...");
+            _log.Info("Listening for lockdown ...");
 
             //When a client makes a request to a Uniform Resource Identifier (URI) handled by an HttpListener object, the HttpListener provides a HttpListenerContext object that contains information about the sender, the request, and the response that is sent to the client. The HttpListenerContext.Request property returns the HttpListenerRequest object that describes the request.
 
@@ -46,7 +54,7 @@ namespace LockdownService
 
             var URL = request.Url.ToString();
 
-            Console.WriteLine("Whoot! Detected a lockdown ..." + URL);
+            _log.Info("Whoot! I Detected a lockdown ..." + URL);
 
             if (URL.Contains("Hamilton"))
             {
@@ -87,7 +95,7 @@ namespace LockdownService
 
         private static void LockdownEvents()
         {
-            Console.WriteLine("Whoot! Detected a lockdown ...");
+            _log.Info("Whoot! Detected a lockdown ...");
             // run the WooWoo sound
             //Load the webpage with the SignalR in it
 
