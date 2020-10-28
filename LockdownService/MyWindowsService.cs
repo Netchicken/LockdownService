@@ -6,11 +6,13 @@ namespace LockdownService
     {
         private static readonly ILog _log = LogManager.GetLogger(typeof(MyWindowsService));
 
+        URlListener uRlListener = new URlListener();
         public void Start()
         {
             _log.Info("LockdownService Starting...");
 
-            URlListener.SimpleListener();
+
+            uRlListener.SimpleListener();
 
 
             _log.Info("LockdownService Started succesfully.");

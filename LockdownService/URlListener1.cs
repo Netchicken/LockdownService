@@ -1,22 +1,20 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Runtime.InteropServices;
+using WMPLib;
 
 namespace LockdownService
 {
-    //Todo create a service for each branch
-    //todo crate a service for student /staff
 
-    //todo create a folder to hold the service, a page with a sound - Forms? 
-
-
-    //https://docs.microsoft.com/en-us/dotnet/api/system.net.httplistenerrequest?view=netcore-3.1
-
-    internal  class URlListener
+    internal class URlListener
     {
+
+
         private static readonly ILog _log = LogManager.GetLogger(typeof(URlListener));
-        public  void SimpleListener()
+        public void SimpleListener()
         {
             //does it work?
             if (!HttpListener.IsSupported)
@@ -101,12 +99,9 @@ namespace LockdownService
             //  listener.Stop();
         }
 
-        private  void LockdownEvents()
+        private void LockdownEvents()
         {
             _log.Info("Whoot! Detected a lockdown ...");
-
-            //  string path = @"C:\Dropbox\Enform\Lockdown_service_form\lockdown.html";
-
 
 
             string basePath = Environment.CurrentDirectory;
@@ -129,7 +124,7 @@ namespace LockdownService
 
         }
         //open the webpage while fixing core bug
-        private  void OpenUrl(string url)
+        private void OpenUrl(string url)
         {
             try
             {
@@ -163,7 +158,7 @@ namespace LockdownService
         /// Need to load sound outside of webpage becuase browser doesn't let sound start without interaction first
         /// </summary>
 
-        private  void playSimpleSound()
+        private void playSimpleSound()
         {
             string basePath = Environment.CurrentDirectory;
             string fullPath = Path.GetFullPath("Alarm.mp3", basePath);
@@ -174,6 +169,8 @@ namespace LockdownService
 
 
         }
+
+
 
 
 
