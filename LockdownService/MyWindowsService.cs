@@ -11,8 +11,18 @@ namespace LockdownService
         {
             _log.Info("LockdownService Starting...");
 
+            try
+            {
+                uRlListener.SimpleListener();
+            }
+            catch (System.Exception e)
+            {
 
-            uRlListener.SimpleListener();
+                _log.Info(e.ToString());
+                Stop();
+                _log.Info("LockdownService crashed .");
+            }
+
 
 
             _log.Info("LockdownService Started succesfully.");
