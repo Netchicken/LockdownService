@@ -103,11 +103,10 @@ namespace LockdownService
             _log.Info("Whoot! Detected a lockdown ...");
 
 
-            string basePath = Environment.CurrentDirectory;
-            string fullPath = Path.GetFullPath("lockdown.html", basePath);
-            OpenUrl(fullPath);
 
-            playSimpleSound();
+            // OpenUrl();
+
+            // playSimpleSound();
 
 
 
@@ -123,19 +122,38 @@ namespace LockdownService
 
         }
         //open the webpage while fixing core bug
-        private void OpenUrl(string url)
+        internal void OpenWebpage()
         {
+            _log.Info("OPen the webpage");
+            string basePath = Environment.CurrentDirectory;
+            string fullPath = Path.GetFullPath("lockdown.html", basePath);
+
             try
             {
-                Process.Start(url);
+                // Process.Start(fullPath);
+                Process.Start("IExplore.exe", fullPath);
             }
             catch
             {
+                string url = fullPath;
+                _log.Info(url);
                 // hack because of this: https://github.com/dotnet/corefx/issues/10361
+
+                url = url.Replace("&", "^&");
+                url = url.Replace(" ", "_");
+                _log.Info(url);
+
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    url = url.Replace("&", "^&");
-                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+
+                    ProcessStartInfo startInfo = new ProcessStartInfo("chrome.exe", fullPath)
+                    {
+                        WindowStyle = ProcessWindowStyle.Maximized
+                    };
+
+                    // Process.Start(startInfo);{ CreateNoWindow = true }
+
+                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
@@ -161,7 +179,7 @@ namespace LockdownService
         {
 
 
-          //  Audio.Play();
+            //  Audio.Play();
 
             //string basePath = Environment.CurrentDirectory;
             //string fullPath = Path.GetFullPath("Alarm.mp3", basePath);
