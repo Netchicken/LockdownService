@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
-
 namespace LockdownService
 {
+    //https://stackoverflow.com/questions/62427859/asp-net-core-listening-on-both-https-mydomain-and-https-www-mydomain-wi
 
     internal class URlListener
     {
@@ -140,7 +140,7 @@ namespace LockdownService
 
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-
+                    //"iexplore.exe"IExplore.exe"
                     ProcessStartInfo startInfo = new ProcessStartInfo("chrome.exe", fullPath)
                     {
                         WindowStyle = ProcessWindowStyle.Maximized
@@ -164,33 +164,6 @@ namespace LockdownService
                 }
             }
         }
-
-
-        /// <summary>
-        /// Need to load sound outside of webpage becuase browser doesn't let sound start without interaction first
-        /// </summary>
-
-        private void playSimpleSound()
-        {
-
-
-            //  Audio.Play();
-
-            //string basePath = Environment.CurrentDirectory;
-            //string fullPath = Path.GetFullPath("Alarm.mp3", basePath);
-
-            //WindowsMediaPlayer myplayer = new WindowsMediaPlayer();
-            //myplayer.URL = fullPath;
-            //myplayer.controls.play();
-
-
-        }
-
-
-
-
-
-
 
     }
 }

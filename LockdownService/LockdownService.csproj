@@ -39,6 +39,9 @@
     <None Update="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="stripes.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="VCstripes.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

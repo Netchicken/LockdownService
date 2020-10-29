@@ -14,8 +14,27 @@
         }
 
         html {
-            background: url(VCstripes.png) no-repeat center center fixed;
+            background: url(stripes.png) no-repeat center center fixed;
             background-size: cover;
+        }
+
+        .ULformat {
+            margin: auto;
+            width: 70%;
+            border: 4px solid red;
+            border-radius: 25px;
+            padding: 10px;
+            font-weight: bold;
+            font-size: x-large;
+            background-color: rgba(255, 255, 255, 0.55);
+        }
+
+        h1 {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            font-size: xx-large;
+            color: red;
+            text-align: center;
         }
     </style>
 
@@ -24,7 +43,7 @@
 
 </head>
 <body onload="playAudio()">
-    <h1>Lock Down!!!</h1>
+    <h1>Vision College Lock Down</h1>
 
 
     <audio id="myAudio">
@@ -33,6 +52,22 @@
     <input onclick="playAudio()" type="button" value="Play Alarm">
     <input onclick="pauseAudio()" type="button" value="Stop Alarm">
 
+    <div class="ULformat" margin-top="90px">
+        <ul>
+            <li>Lock and/or barricade the door.</li>
+            <li>Silence your cell phone, including the vibrate feature.</li>
+            <li>Hide behind large objects if possible.</li>
+            <li>Remain very quiet and do not leave until directed by law enforcement officers.</li>
+            <li>
+                Your hiding place should:
+                <ul>
+                    <li>Be out of the persons view.</li>
+                    <li>Provide protection if shots are fired in your direction</li>
+                    <li>Do Not trap or restrict your options for movement</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </body>
 
 </html>
