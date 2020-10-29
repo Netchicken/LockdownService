@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
-using WMPLib;
 
 namespace LockdownService
 {
@@ -23,7 +22,7 @@ namespace LockdownService
                 return;
             }
 
-
+            //https://localhost:44300/?branch=Hamilton
             var prefixes = new[] { "https://localhost:44300/", "https://www.stuff.co.nz/", "https://www.reddit.com/" };
 
 
@@ -160,12 +159,16 @@ namespace LockdownService
 
         private void playSimpleSound()
         {
-            string basePath = Environment.CurrentDirectory;
-            string fullPath = Path.GetFullPath("Alarm.mp3", basePath);
 
-            WindowsMediaPlayer myplayer = new WindowsMediaPlayer();
-            myplayer.URL = fullPath;
-            myplayer.controls.play();
+
+          //  Audio.Play();
+
+            //string basePath = Environment.CurrentDirectory;
+            //string fullPath = Path.GetFullPath("Alarm.mp3", basePath);
+
+            //WindowsMediaPlayer myplayer = new WindowsMediaPlayer();
+            //myplayer.URL = fullPath;
+            //myplayer.controls.play();
 
 
         }
