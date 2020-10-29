@@ -103,21 +103,16 @@ namespace LockdownService
             _log.Info("Whoot! Detected a lockdown ...");
 
 
-
-            // OpenUrl();
-
-            // playSimpleSound();
-
-
-
             // run the WooWoo sound
+
+            Audio.Play();
+
+            //load the student webpage - needs instructions
+            OpenWebpage();
+
             //Load the webpage with the SignalR in it
 
             //todo  need to differentuate betwenn student and staff machines as well
-
-
-
-
 
 
         }
