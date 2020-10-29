@@ -140,7 +140,7 @@ namespace LockdownService
                 // hack because of this: https://github.com/dotnet/corefx/issues/10361
 
                 url = url.Replace("&", "^&");
-                url = url.Replace(" ", "_");
+                url = url.Replace(" ", "%20");
                 _log.Info(url);
 
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -153,7 +153,7 @@ namespace LockdownService
 
                     // Process.Start(startInfo);{ CreateNoWindow = true }
 
-                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}"));
+                    Process.Start(new ProcessStartInfo("cmd", $"/c start {"file:///" + url}"));
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
