@@ -119,7 +119,7 @@ namespace LockdownService
         //open the webpage while fixing core bug
         internal void OpenWebpage()
         {
-            _log.Info("OPen the webpage");
+            _log.Info("Open the webpage");
             string basePath = Environment.CurrentDirectory;
             string fullPath = Path.GetFullPath("lockdown.html", basePath);
 
@@ -164,6 +164,8 @@ namespace LockdownService
                 }
             }
         }
+
+       
 
     }
 }
